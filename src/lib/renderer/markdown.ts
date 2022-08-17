@@ -1,6 +1,7 @@
 import { emojis } from "$lib/renderer/emoji";
 import hljs from "highlight.js";
 import { marked } from "marked";
+import DOMPurify from "dompurify";
 
 export interface MarkdownResult {
     error: string | undefined,
@@ -68,6 +69,10 @@ export function toHTML(text: string): MarkdownResult {
                         language: lang,
                     }).value;
                 },
+                sanitizer: (html: string) => {
+                    return DOMPurify.sanitize(html, {}) as string
+                },
+                sanitize: true
             }),
             error: undefined
         }
