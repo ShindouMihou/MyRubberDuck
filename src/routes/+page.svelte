@@ -124,7 +124,7 @@
         {/each}
         <div id="scroll_point"></div>
     </div>
-    <div class="top-0 xl:top-0 xl:bottom-0 py-7 bg-zinc-900 fixed left-0 px-4 xl:px-12 w-full" id="text-bar-container">
+    <div class="top-0 xl:top-auto xl:bottom-0 py-7 bg-zinc-900 fixed left-0 px-4 xl:px-12 w-full" id="text-bar-container">
         <div class="flex flex-row justify-between bg-zinc-800 bg-opacity-80 max-h-96 w-full p-2 px-5 rounded-2xl border-2 h-fit border-zinc-700 items-center flex-shrink-0">
             <button on:click={clear} class="border-r pr-2 border-r-zinc-700" data-tippy-content="Clear Chat">
                 <Icon src={Trash} class="h-6 w-6 flex-shrink-0"></Icon>
