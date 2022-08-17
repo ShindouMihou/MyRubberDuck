@@ -1,38 +1,15 @@
-# create-svelte
+<div align=center>
+  <img src="https://raw.githubusercontent.com/ShindouMihou/MyRubberDuck/master/static/rubbery_duck.png" align="center"/>
+</div>
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+#
 
-## Creating a project
+[My Rubber Duck 🦆](https://rubberduck.mihou.pw) is a platform where one can privately chat with themselves without any external servers receiving your messages. The platform was created to help software engineers stop making their friends into rubber ducks and make themselves into rubber ducks.
 
-If you're seeing this, you've probably already done this step. Congrats!
+In this platform, there is no backend server that stores the messages or anything. All messages are stored on your local storage to make sure that you are 
+not violating any NDAs by disclosing your rants that might contain your company's properties or related. If you are disclosing anything related to NDA then 
+feel free to clear your messages anytime with the trash bin button.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+This platform serves no other purpose but for people to rant on themselves and somehow figure out a solution for their problems amidst their rants, thereby, earning it the name of a rubber duck.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+You can start ranting to yourself via our Cloudflare Pages-hosted website at [My Rubber Duck 🦆](https://rubberduck.mihou.pw)
