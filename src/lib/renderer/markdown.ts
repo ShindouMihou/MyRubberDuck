@@ -56,7 +56,7 @@ function displayLanguage(lang: string) {
 export function toHTML(text: string): MarkdownResult {
     try {
         return {
-            content: marked(emojis(text), {
+            content: DOMPurify.sanitize(marked(emojis(text), {
                 smartypants: true,
                 gfm: true,
                 highlight: (code, lang) => {
@@ -71,9 +71,8 @@ export function toHTML(text: string): MarkdownResult {
                 },
                 sanitizer: (html: string) => {
                     return DOMPurify.sanitize(html, {}) as string
-                },
-                sanitize: true
-            }),
+                }
+            }), {}),
             error: undefined
         }
     } catch (error: any) {
