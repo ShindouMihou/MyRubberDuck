@@ -34,6 +34,7 @@
     "autosize": "^5.0.1",
     "dompurify": "^2.3.10",
     "highlight.js": "^11.6.0",
+    "isomorphic-dompurify": "^0.20.0",
     "marked": "^4.0.18",
     "node-emoji": "^1.11.0",
     "tippy.js": "^6.3.7"

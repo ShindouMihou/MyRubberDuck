@@ -1,7 +1,7 @@
 import { emojis } from "$lib/renderer/emoji";
 import hljs from "highlight.js";
 import { marked } from "marked";
-import DOMPurify from "dompurify";
+import DOMPurify from "isomorphic-dompurify";
 
 export interface MarkdownResult {
     error: string | undefined,

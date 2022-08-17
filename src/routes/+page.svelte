@@ -9,7 +9,7 @@
     import { toHTML } from '$lib/renderer/markdown';
     import ErrorBlock from '$lib/components/ErrorBlock.svelte';
     import autosize from "autosize";
-    import DOMPurify from 'dompurify';
+    import DOMPurify from 'isomorphic-dompurify';
 
     let messages: string[] = [];
     let contents = "";
