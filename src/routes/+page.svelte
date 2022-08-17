@@ -9,9 +9,19 @@
     import { toHTML } from '$lib/renderer/markdown';
     import ErrorBlock from '$lib/components/ErrorBlock.svelte';
     import autosize from "autosize";
+    import DOMPurify from 'dompurify';
 
     let messages: string[] = [];
     let contents = "";
+
+    // CC: https://github.com/cure53/DOMPurify/issues/317#issuecomment-698800327
+    DOMPurify.addHook('afterSanitizeAttributes', function (node) {
+         // set all elements owning target to target=_blank
+         if ('target' in node) {
+            node.setAttribute('target', '_blank');
+            node.setAttribute('rel', 'noopener');
+        }
+    });
 
     const WELCOME_MESSAGE = [
         "Hello,",
