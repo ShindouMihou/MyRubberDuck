@@ -110,7 +110,7 @@
     }
 </script>
 
-<div class="flex flex-col w-full m-auto overflow-auto">
+<div class="flex flex-col w-full m-auto">
     {#if errors.length > 0}
         {#each errors as error}
             <ErrorBlock message={error} />
@@ -129,7 +129,7 @@
             <button on:click={clear} class="border-r pr-2 border-r-zinc-700" data-tippy-content="Clear Chat">
                 <Icon src={Trash} class="h-6 w-6 flex-shrink-0"></Icon>
             </button>
-            <textarea id="text-bar" rows="1" disabled placeholder="Loading..." class="ml-2 bg-transparent w-full p-2 outline-none resize-none" bind:value={contents}></textarea>
+            <textarea id="text-bar" rows="1" disabled placeholder="Loading..." class="ml-2 bg-transparent w-full max-h-96 p-2 outline-none resize-none" bind:value={contents}></textarea>
             <button on:click={send} data-tippy-content="Send Message">
                 <Icon src={Reply} class="h-6 w-6 flex-shrink-0"></Icon>
             </button>
