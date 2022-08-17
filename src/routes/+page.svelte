@@ -46,6 +46,16 @@
         send();
     }
 
+    // This fixes the mobile keyboard issue, thanks so much.
+    // https://stackoverflow.com/a/62054678
+    let visualViewportListener: (this: VisualViewport, ev: Event) => any = (event) => {
+            if(event.target!!.height + 30 < document!!.scrollElement.clientHeight) {
+                document.querySelector('#text-bar-container')!!.classList.replace('py-7', 'py-24')
+            } else {
+                document.querySelector('#text-bar-container')!!.classList.replace('py-14', 'py-7')
+            }
+        }
+
     let tippyInitialized = false
     let errors: string[] = []
     let loaded = false;
@@ -59,9 +69,12 @@
             localStorage.setItem("messages", JSON.stringify(messages))
         }
 
-        setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 250)
+        setTimeout(() => document.querySelector('#scroll_point')!!.scrollIntoView(), 250)
         document.removeEventListener('keydown', keydownListener)
         document.addEventListener("keydown", keydownListener);
+
+        window.visualViewport.removeEventListener('resize', visualViewportListener);
+        window.visualViewport.addEventListener('resize', visualViewportListener);
 
         if (tippyInitialized === false) {
             tippy('[data-tippy-content]', {
@@ -86,7 +99,7 @@
         contents = "";
         setTimeout(() => {
             autosize.update(document.querySelector('#text-bar')!!)
-            window.scrollTo(0, document.body.scrollHeight)
+            document.querySelector('#scroll_point')!!.scrollIntoView()
         }, 200)
     }
 
@@ -116,14 +129,15 @@
             <ErrorBlock message={error} />
         {/each}
     {/if}
-    <div class="flex flex-col gap-4 pb-[5.5rem] xl:pb-20">
+    <div class="flex flex-col gap-4 pb-[5.5rem] xl:pb-20" id="messages">
         {#each messages as message}
             <Message>
                 {@html html(message)}
             </Message>
         {/each}
+        <div id="scroll_point"></div>
     </div>
-    <div class="bottom-0 py-7 bg-zinc-900 fixed left-0 px-4 xl:px-12 w-full">
+    <div class="bottom-0 py-7 bg-zinc-900 fixed left-0 px-4 xl:px-12 w-full" id="text-bar-container">
         <div class="flex flex-row justify-between bg-zinc-800 bg-opacity-80 max-h-96 w-full p-2 px-5 rounded-2xl border-2 h-fit border-zinc-700 items-center flex-shrink-0">
             <button on:click={clear} class="border-r pr-2 border-r-zinc-700" data-tippy-content="Clear Chat">
                 <Icon src={Trash} class="h-6 w-6 flex-shrink-0"></Icon>
