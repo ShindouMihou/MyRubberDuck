@@ -48,6 +48,7 @@
 
     let tippyInitialized = false
     let errors: string[] = []
+    let loaded = false;
 
     onMount(() => {
         autosize(document.querySelector('#text-bar')!!)
@@ -68,10 +69,17 @@
             })
             tippyInitialized = true
         }
+
+        document.querySelector('#text-bar')!!.setAttribute('placeholder', 'You are a rubber duck.')
+        document.querySelector('#text-bar')!!.disabled = false;
+        loaded = true;
     });
 
 
     function send() {
+        if (!loaded) return
+        if (contents.trim() === "") return
+
         messages = [...messages, contents];
         localStorage.setItem("messages", JSON.stringify(messages));
 
@@ -120,7 +128,7 @@
             <button on:click={clear} class="border-r pr-2 border-r-zinc-700" data-tippy-content="Clear Chat">
                 <Icon src={Trash} class="h-6 w-6 flex-shrink-0"></Icon>
             </button>
-            <textarea id="text-bar" rows="1" placeholder="You are your own rubber duck." class="ml-2 bg-transparent w-full p-2 outline-none resize-none" bind:value={contents}></textarea>
+            <textarea id="text-bar" rows="1" disabled placeholder="Loading..." class="ml-2 bg-transparent w-full p-2 outline-none resize-none" bind:value={contents}></textarea>
             <button on:click={send} data-tippy-content="Send Message">
                 <Icon src={Reply} class="h-6 w-6 flex-shrink-0"></Icon>
             </button>
