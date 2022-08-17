@@ -102,7 +102,7 @@
     }
 </script>
 
-<div class="flex flex-col w-full m-auto overflow-hidden">
+<div class="flex flex-col w-full m-auto overflow-scroll">
     {#if errors.length > 0}
         {#each errors as error}
             <ErrorBlock message={error} />
