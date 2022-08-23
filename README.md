@@ -4,6 +4,10 @@
 
 #
 
+> **Note**
+>
+> The official mobile native version of My Rubber Duck which is more optimized for mobile devices and has a teeny bit more functionality is now available for download. [`View Releases`](https://github.com/ShindouMihou/MyRubberDuck-Native/releases)
+
 [My Rubber Duck 🦆](https://rubberduck.mihou.pw) is a platform where one can privately chat with themselves without any external servers receiving your messages. The platform was created to help software engineers stop making their friends into rubber ducks and make themselves into rubber ducks instead.
 
 In this platform, there is no backend server that stores the messages or anything. All messages are stored on your local storage to make sure that you are 
